@@ -27,8 +27,15 @@ int main() {
     for (int attempt = 1; attempt <= maxAttempts; ++attempt) {
         cout << "Essai " << attempt << ": Entrez votre devinette: ";
         cin >> userGuess;
+        
+        // Vérifier que le nombre est entre 0 et 100
+        if (userGuess < minNumber || userGuess > maxNumber) {
+            cout << "Erreur: Le nombre doit être entre " << minNumber << " et " << maxNumber << "!" << endl;
+            --attempt;
+            continue;
+        }
 
-        // Vérifier si l'entrée est invalide
+        // Vérifier si l'entrée est invalide (texte au lieu de nombre)
         if (cin.fail()) {
             cout << "Erreur: Veuillez entrer un nombre valide!" << endl;
             cin.clear();
