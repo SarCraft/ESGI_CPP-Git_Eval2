@@ -28,6 +28,16 @@ int main() {
         cout << "Essai " << attempt << ": Entrez votre devinette: ";
         cin >> userGuess;
 
+        // Vérifier si l'entrée est invalide
+        if (cin.fail()) {
+            cout << "Erreur: Veuillez entrer un nombre valide!" << endl;
+            cin.clear();
+            cin.ignore(10000, '\n');
+            // ne pas compter cette tentative
+            --attempt;
+            continue;
+        }
+
         if (userGuess < secretNumber) {
             cout << "C'est plus grand!" << endl;
         } else if (userGuess > secretNumber) {
